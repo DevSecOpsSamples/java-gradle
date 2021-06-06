@@ -12,7 +12,7 @@ WORKDIR /opt/build
 
 RUN pwd \
     && ls \
-    && gradle build
+    && /home/gradle/src/gradle build
 
 VOLUME /tmp
 ARG JAR_FILE=./build/libs/devopssample-java-gradle-0.0.1.jar
