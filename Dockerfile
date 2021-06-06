@@ -6,7 +6,7 @@ WORKDIR /opt/build
 
 RUN pwd \
     && ls -alh \
-    && ./gradlew build --no-deamon \
+    && ./gradlew build --no-daemon \
     && ls -alh ./build/libs/ \
     && cp ./build/libs/devopssample-java-gradle-0.0.1.jar app.jar
 
