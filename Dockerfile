@@ -11,4 +11,5 @@ RUN pwd \
     && cp ./build/libs/devopssample-java-gradle-0.0.1.jar app.jar
 
 VOLUME /tmp
+EXPOSE 8080
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
