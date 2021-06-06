@@ -12,7 +12,6 @@ WORKDIR /opt/build
 
 RUN pwd \
     && ls \
-    && ./gradlew +x
     && ./gradlew build
 
 VOLUME /tmp
