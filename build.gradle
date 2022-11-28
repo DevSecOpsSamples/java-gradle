@@ -2,11 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.2.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'base'
+  	id "org.sonarqube" version "3.4.0.2513"
 }
-
-group = 'devopssample'
-version = '0.0.1'
 sourceCompatibility = '1.8'
+archivesBaseName = 'app'
 
 repositories {
 	mavenCentral()
@@ -19,6 +19,27 @@ dependencies {
 	}
 }
 
+springBoot {
+    mainClassName = 'com.sample.SampleApplication.java'
+}
 test {
 	useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "java-gradle"
+        property "sonar.projectKey", "DevSecOpsSamples_java-gradle"
+        property "sonar.organization", "devsecopssamples"
+        // property "sonar.host.url", "http://127.0.0.1:9000"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "."
+        property "sonar.java.binaries", "build"
+        property "sonar.exclusions", "**/node_modules/**, **/cdk.out/**"
+        property "sonar.issue.ignore.multicriteria", "e1"
+        property "sonar.issue.ignore.multicriteria.e1.ruleKey", "typescript:S1848"
+        property "sonar.issue.ignore.multicriteria.e1.resourceKey", "**/*.ts"
+        property "sonar.links.ci", "https://github.com/DevSecOpsSamples/java-gradle"
+    }
 }
