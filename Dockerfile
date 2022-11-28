@@ -4,11 +4,8 @@ RUN mkdir -p /opt/build
 ADD ./ /opt/build
 WORKDIR /opt/build
 
-RUN pwd \
-    && ls -alh \
-    && ./gradlew build --no-daemon \
-    && ls -alh ./build/libs/ \
-    && cp ./build/libs/devopssample-java-gradle-0.0.1.jar app.jar
+RUN ./gradlew build --no-daemon \
+    && cp ./build/libs/app.jar app.jar
 
 VOLUME /tmp
 EXPOSE 8080
